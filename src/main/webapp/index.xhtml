@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+    <h1>Apache Lucene Test</h1>
+    <h:form>
+        <p:inputText value="#{editor.textToSearch}" placeholder="#{editor.TEXT_TO_SEARCH_PLACEHOLDER}"/>
+        <p:commandButton value="Lucene test" actionListener="#{editor.testLucene}" ajax="true"
+                         update="resultDataTable,foundHits"/>
+
+        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+
+        <p:dataTable var="content" value="#{editor.getIndexedContent()}">
+            <p:column headerText="Lucene Indexed Content">
+                <h:outputText value="#{content}"/>
+            </p:column>
+        </p:dataTable>
+
+        <p:dataTable id="resultDataTable" var="result" value="#{editor.luceneResult}">
+            <p:column headerText="Lucene Search Result">
+                <h:outputText value="#{result}"/>
+            </p:column>
+        </p:dataTable>
+
+
+        <h:outputText id="foundHits" value="Found #{editor.hits} hits."></h:outputText>
+
+    </h:form>
+
+</h:body>
+</html>
