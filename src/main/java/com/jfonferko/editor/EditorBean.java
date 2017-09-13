@@ -1,4 +1,4 @@
-package com.mkyong.editor;
+package com.jfonferko.editor;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
